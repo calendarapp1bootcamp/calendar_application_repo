@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Manager</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css">    
+    <!-- Semantic-UI CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- Google+ Api Login -->
+    <meta name="google-signin-client_id" content="987306291886-0i33fhbb6k1ceqti25epi6f6393bcqkq.apps.googleusercontent.com"></meta>
+
+    <!-- FIREBASE -->
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.12.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/4.12.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.12.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.12.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.12.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!-- *Added firebase-store manually to connect to firestore database -->
+    <script defer src="/__/firebase/4.12.1/firebase-firestore.js"></script>
+    
+  </head>
+  <body>
+        
+    <!-- NAV -->
+    <div class="ui sidebar vertical left inverted labeled main icon menu">
+      <a href="https://vasquezlf.github.io/" class="item"><i class="icon home"></i>Home</a>
+      <!-- <a href="#" class="item"><i class="icon code"></i>Portfolio</a> -->
+      <!-- <div class="item">
+        <div class="header">Portfolio</div>
+        <div class="menu">
+          <a href='https://vasquezlf.github.io/hangman/' class="item">Hangman</a>
+          <a href='https://vasquezlf.github.io/crystalcollector/' class="item">Crystal Collector</a>
+          <a href='https://vasquezlf.github.io/triviagame/' class="item">Trivia Game</a>
+          <a href='https://vasquezlf.github.io/giffygenerator/' class="item">Giffy Generator</a>
+          <a href='https://vasquezlf.github.io/giffygenerator/' class="item">Train Scheduler</a>
+        </div>
+      </div> -->
+    </div>
+    <div class="ui basic inverted icon top fixed menu">
+      <a class="item" id="menu-toggle">
+        <i class="sidebar large icon"></i>
+        Task Manager
+      </a>
+      <div class="right menu">
+        <a class="item"></a>
+      </div>
+    </div>
+    <div class="pusher">  <!-- CONTENT being pushed aside when menu is toggled -->
+
+
+      <!-- HERO -->
+      <div id="login-page">
+        <img class="ui fluid image" src="assets/images/placeholder.jpg" alt="">
+        <!-- Body -->
+        <div class="ui container ">
+          <!-- Step 1: Starting UI - Login -->
+          <div class="ui segment center aligned" id="test">
+            <!-- <div class="g-signin2" data-onsuccess="login()"></div> -->
+            <button class="g-signout"id="signIn" onclick="login()">Sign In</button>
+          </div>
+        </div>
+      </div>
+    <div class="ui container" id="wrapper-id">
+      
+        <!-- Step 2: Render Todo list - Use jQuery to hide() and show() -->
+        <div class="ui grid container" id="main-page">
+          <!-- *** Column for tasks ***-->
+          <div class="ten wide column">
+            <!-- Add ROWS based on days/date -->
+            <div class="row">
+                <div class="ui feed">
+                  
+                  <!-- Test Event1 -->
+                  <!-- Dynamically generate div.events this is where new tasks are rendered -->
+                  <!-- <div class="ui segment">  -->
+                  <div class="event " data-eventDate="04202018" id="test-04202018">
+                    <div class="content">
+                      <div class="summary">
+                        <span id="task-day">Monday</span> <span id="task-date">04/20/2018</span>
+                      </div>
+                      <div class="ui list" id="list-04202018">
+                        <!-- Dynamically generate div.items this is where new dates are rendered and where each item  -->
+                        <div class="item extra text"  data-task="task-1">
+                          <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label>Take a dump</label>
+                          </div>
+                        </div>
+                        <div class="item extra text" data-task="task-2">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>Drink coffee</label>
+                            </div>
+                        </div>
+                        <div class="item extra text" data-task="task-3">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>Exercise</label>
+                            </div>
+                        </div>
+                        <div class="item extra text" data-task="task-4">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>Take a shower</label>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- </div> -->
+
+                <!-- <div class="ui segment">  -->
+                
+                  <div class="event">
+                      <div class="content">
+                      <div class="summary">
+                        <span id="task-day">Tuesday</span> <span id="task-date">04/21/2018</span>
+                      </div>
+                      <div class="ui list">
+                        <!-- Dynamically generate div.items this is where new dates are rendered and where each item  -->
+                        <div class="item extra text"  data-task="task-1">
+                            <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label>Take a dump</label>
+                            </div>
+                          </div>
+                          <div class="item extra text" data-task="task-2">
+                              <div class="ui checkbox">
+                                  <input type="checkbox">
+                                  <label>Drink coffee</label>
+                              </div>
+                          </div>
+                          <div class="item extra text" data-task="task-3">
+                              <div class="ui checkbox">
+                                  <input type="checkbox">
+                                  <label>Exercise</label>
+                              </div>
+                          </div>
+                          <div class="item extra text" data-task="task-4">
+                              <div class="ui checkbox">
+                                  <input type="checkbox">
+                                  <label>Take a shower</label>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+          <!-- </div> -->
+
+                    <!-- <div class="event">
+                      <div class="label">
+                        <img src="/images/avatar/small/laura.jpg">
+                      </div>
+                      <div class="content">
+                        <div class="date">
+                          3 days ago
+                        </div>
+                        <div class="summary">
+                          <a>Laura Faucet</a> created a post
+                        </div>
+                        <div class="extra text">
+                          Have you seen what's going on in Israel? Can you believe it.
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+            </div>
+          </div>
+
+          <!-- *** Column for Button Templates *** -->
+          <div class="column"></div>
+          
+          </div>
+
+
+          <!-- *** Add Task Button -->
+          <div class="some-wrapping-div">
+              <div class="ui icon button _addTask" id="add-task"data-content="The default theme's basic popup removes the pointing arrow." data-variation="basic">
+                  <i class="add icon"></i>
+            </div>
+          </div>
+          <div class="ui custom popup">
+              <div class="ui form">
+                  <!-- <div class="fields"> -->
+                    <div class="field">
+                      <label>Add Task:</label>
+                      <input type="text" id="add-task-input" placeholder="">
+                    </div>
+                    <div class="field">
+                      <input type="datetime-local" placeholder="HH:MM">
+                    </div>
+                    <div class="fields">
+                      <div class="field">
+                          <label>Category</label>
+                          <input type="text" placeholder="Category">
+                        </div>
+                      <div class="field">
+                          <label>Priority</label>
+                          <input type="number" placeholder="0">
+                      </div>
+                    </div>
+
+                    <button class="ui button right floated" id="add-task-button" tabindex="0" onclick="addTask()">Enter</button>
+                </div>
+          </div>
+
+        <!-- TEST SIGNOUT -->
+        <!-- <button class="g-signout"id="signOut" onclick="signOut()">Sign Out</button> -->
+      </div>  
+      </div>  <!-- END **** div.pusher **** -->
+    </div> <!-- END wrapper -->
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Google API -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Link to Moment.js should go here -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- SemanticUI JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+    <!-- Index.js -->
+    <script type="text/javascript" src="assets/javascript/index.js"></script>
+    <!-- <script src="assets/javascript/login.js"></script> -->
+
+
+
+<!-- ****START Test script for login-->
+    <script>
+      // ************* Initializations *************************
+      
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Hide the main page content initially
+        $('.ui.grid.container').hide()
+        const app = firebase.app()
+        const db = firebase.firestore()
+
+        $('#add-task')
+        .popup({
+          popup : $('.custom.popup'),
+          on    : 'click'
+        })
+      })
+      //*********** MAIN LOGIC GOES INSIDE THIS FUNCTION****************************************
+      function app(e) {
+        // Clear screen
+        // document.write()
+        // Show main page content after login
+        $('.ui.grid.container').show()
+        
+
+        
+        const name = e.displayName
+        const email = e.email
+        
+        console.log(name)
+        console.log(email)
+        // document.write(`<button class="g-signout"id="signOut" onclick="signOut()">Sign Out</button>`)
+      }
+
+
+      //*************************************************************************
+
+      function login() {
+        // Get current user. IF user is signed in execute app(). Else, signinwithpop
+        function newLoginHappened (result) {
+          if (result) {
+            console.log("user is signed in")
+            $('#login-page').hide()
+            // Proceed to main and pass the result
+            app(result)
+          } else {
+            // Choose Google as Auth provider
+            const provider = new firebase.auth.GoogleAuthProvider()
+            // ELSE Open signInWithPop when NOT signed it
+            firebase.auth().signInWithPopup(provider)
+            .then(result => {
+              // Hide login page after logging in
+              $('#login-page').hide()
+              // Proceed to main logic
+                app(result)
+              })
+            }
+          }
+          firebase.auth().onAuthStateChanged(newLoginHappened)
+      } // END googleLogin
+      
+
+      // Add Task function
+      function addTask() {
+
+        console.log('Clicked addTask()')
+        // Get the task "value" from the textbox and store it
+        const toDoTask = $('#add-task-input').val().trim()
+
+        // const eventDate = $('#test-04202018')
+        const UIListItem = $(`<div class="item extra text">`)
+        const UICheckbox = $(`<div class="ui checkbox">`)
+        const UITaskInput = $(`<input type="checkbox">`)
+        const UITaskLabel = $(`<label>`)
+        
+        const taskList = $('#list-04202018')
+        // const taskListItem = $(taskList).append(UIListItem)
+        // const taskListCheckbox = $(taskListItem).append(UICheckbox)
+        // const taskListInputLabel = $(taskListCheckbox).append(UITaskInput).append(UITaskLabel)
+
+        const taskListItem = $(UIListItem).appendTo(taskList)
+        const taskListCheckbox = $(UICheckbox).appendTo(taskListItem)
+        const taskListInput = $(UITaskInput).appendTo(taskListCheckbox)
+        const taskListLabel = $(UITaskLabel).appendTo(taskListCheckbox)
+
+        taskListLabel.append(toDoTask)
+      }
+
+    </script>
+    
+  </body>
+</html>
