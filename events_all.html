@@ -17,7 +17,7 @@
   		background: transparent;
 
   	}
-    .main .event {
+    .event {
     	margin: 10px 20px;
     	padding: 12px;
     	border: 2px solid white;
@@ -99,29 +99,8 @@ crossorigin="anonymous">
 </script>
 <script src="assets/javascript/mini-event-calendar.js"></script>
 <script>
-	var myEvents = [{
-      title: "Event Title 1",
-      date: 1519806678259, // unix timestamp
-      link: "jqueryscript.net" // event link
-    },{
-      title: "Event Title 2",
-      date: 1519851600000,
-      link: "jqueryscript.net"
-    },{
-      title: "Event Title 3",
-      date: 1519806678259, // unix timestamp
-      link: "jqueryscript.net" // event link
-    },{
-      title: "Event Title 4",
-      date: 1519851600000,
-      link: "jqueryscript.net"
-    },
-    // more events here
-	];
-
-	$("#calendar").MEC({
-	  calendar_link: "jqueryscript.net", // calendar link
-	  events: myEvents
+	$(document).ready(function() {
+		$("#calendar").MEC();
 	});
 </script>
 </body>
