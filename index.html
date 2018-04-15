@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>food finder</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/zom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Top Trending</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <p>san francisco</p>
+                <p>oakland</p>
+                <p>new york city</p>
+                <p>Birmingham</p>
+                <hr>
+                <br><br>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="cityinput">City</label>
+                        <input type="text" class="form-control" id="cityinput" placeholder="city">
+                        <label for="state">States (select one):</label>
+                        <select class="form-control" id="state"></select>
+                        <button type="submit" id="citysubmit" class="btn btn-default">Get Them</button>
+                    </div>
+                </form>
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <span class="text-uppercase" id="cityhelp"></span>
+                    </div>
+                </div>       
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" id="results">       
+            </div>
+        </div>
+    </div>
+</body>
+</html>
