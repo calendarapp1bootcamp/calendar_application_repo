@@ -1,128 +1,319 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <title>
+      Calendar App!
+    </title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="assets/css/mini-event-calendar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <!-- <script>
+		  $( function() {
+		    $( "#datepicker" ).datepicker();
+		  } );
+  	</script> -->
+    <style>
+      html {
+				background-color: rgba(0, 0, 0, 0.4);
+				}
+				body {
+				background: transparent;
 
-	<title>Calendar App!</title>
-	<meta charset="UTF-8">
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
-  <link rel="stylesheet" href="assets/css/mini-event-calendar.min.css">
-  <style>
-  	html {
-  		background-color: rgba(0, 0, 0, 0.4);
-  	}
-  	body {
-  		background: transparent;
-
-  	}
-    .main .event {
-    	margin: 10px 20px;
-    	padding: 12px;
-    	border: 2px solid white;
-    	border-radius: 7px;
-    	background-color: rgba(255, 255, 255, 0.8);
-    }
-    .container {
-    	padding: 25px;
-    }
-   </style>
-</head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+				}
+				.main .event {
+				margin: 10px 20px;
+				padding: 12px;
+				border: 2px solid white;
+				border-radius: 7px;
+				background-color: rgba(255, 255, 255, 0.8);
+				}
+				.container {
+				padding: 25px;
+				}
+    </style>
+    </link>
+    </link>
+    </meta>
+    </meta>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        Navbar
+      </a>
+      <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon">
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">
+              Home
+              <span class="sr-only">
+                (current)
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+              Dropdown
+            </a>
+            <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+              <a class="dropdown-item" href="#">
+                Action
+              </a>
+              <a class="dropdown-item" href="#">
+                Another action
+              </a>
+              <div class="dropdown-divider">
+              </div>
+              <a class="dropdown-item" href="#">
+                Something else here
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">
+              Disabled
+            </a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </input>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 buttons">
+          <h1>
+            Calendar App!
+          </h1>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-<div class="container">
-	<div class="row">
-		<div class="col-12 buttons">
-			<h1>Calendar App!</h1>
-		</div>
-	</div>
-  <div class="row">
-  	<div class="col-12 col-md-6 col-lg-4 sidebar">
-  		<div class="calendar-container">
-			  <div id="calendar"></div>
-			</div>
-			<div class="form-group">
-			  <label class = 'my-3' for="userinput"><strong>Label could go here</strong></label>
-			  <input type="text" class="form-control my-3" id="userinput">
-			  <input type="submit" class="btn btn-info my-3" value="Create Event">
-			  <input type="submit" class="btn btn-success my-3" value="Find Events">
-			</div>
-		</div>
-		<div class="col-12 col-md-6 col-lg-8 main">
-			Schedule goes here
-			<div class="event">Event 1</div>
-			<div class="event">Event 1</div>
-			<div class="event">Event 1</div>
-		</div>
-	</div>
-</div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 sidebar">
+          <div class="calendar-container">
+            <div id="calendar">
+            </div>
+          </div>
+          <div class="form-group">
 
+            <input class="form-control my-3" id="userinput" type="text">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous">
-</script>
-<script src="assets/javascript/mini-event-calendar.js"></script>
-<script>
-	var myEvents = [{
-      title: "Event Title 1",
-      date: 1519806678259, // unix timestamp
-      link: "jqueryscript.net" // event link
-    },{
-      title: "Event Title 2",
-      date: 1519851600000,
-      link: "jqueryscript.net"
-    },{
-      title: "Event Title 3",
-      date: 1519806678259, // unix timestamp
-      link: "jqueryscript.net" // event link
-    },{
-      title: "Event Title 4",
-      date: 1519851600000,
-      link: "jqueryscript.net"
-    },
-    // more events here
-	];
+            <!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#createEventModal">
+						  Create Event
+						</button>
 
-	$("#calendar").MEC({
-	  calendar_link: "jqueryscript.net", // calendar link
-	  events: myEvents
-	});
-</script>
-</body>
+						<!-- Modal -->
+						<div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModal" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLongTitle">Create an Event</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+										<form>
+										  <div class="form-group row">
+										    <div class="col-sm-12">
+										      <input type="email" class="form-control" id="eventName" placeholder="Event Name">
+										    </div>
+										  </div>
+										  <div class="form-group row align-items-center">
+										  	<input type="text" id="datepicker">
+										  	<!-- <form>
+										  	<div class="nativeDateTimePicker">
+											    <label for="party">Choose a date and time for your party:</label>
+											    <input type="datetime-local" id="party" name="bday">
+											    <span class="validity"></span>
+											  </div>
+											  <p class="fallbackLabel">Choose a date and time for your party:</p>
+											  <div class="fallbackDateTimePicker">
+											    <div>
+											      <span>
+											        <label for="day">Day:</label>
+											        <select id="day" name="day">
+											        </select>
+											      </span>
+											      <span>
+											        <label for="month">Month:</label>
+											        <select id="month" name="month">
+											          <option selected>January</option>
+											          <option>February</option>
+											          <option>March</option>
+											          <option>April</option>
+											          <option>May</option>
+											          <option>June</option>
+											          <option>July</option>
+											          <option>August</option>
+											          <option>September</option>
+											          <option>October</option>
+											          <option>November</option>
+											          <option>December</option>
+											        </select>
+											      </span>
+											      <span>
+											        <label for="year">Year:</label>
+											        <select id="year" name="year">
+											        </select>
+											      </span>
+											    </div>
+											    <div>
+											      <span>
+											        <label for="hour">Hour:</label>
+											        <select id="hour" name="hour">
+											        </select>
+											      </span>
+											      <span>
+											        <label for="minute">Minute:</label>
+											        <select id="minute" name="minute">
+											        </select>
+											      </span>
+											    </div>
+											  </div>
+											  </form> -->
+										  </div>
+										  <div class="form-group row align-items-center">
+										    <div class="col-auto my-1">
+										      <select class="custom-select mr-sm-2" id="year">
+										        <option selected>Enter Year</option>
+										        <option value="1">One</option>
+										        <option value="2">Two</option>
+										        <option value="3">Three</option>
+										      </select>
+										    </div>
+										    <div class="col-auto my-1">
+										      <div class="custom-control custom-checkbox mr-sm-2">
+										        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+										        <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+										      </div>
+										    </div>
+										  </div>
+										  <fieldset class="form-group">
+										    <div class="row">
+										      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+										      <div class="col-sm-10">
+										        <div class="form-check">
+										          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+										          <label class="form-check-label" for="gridRadios1">
+										            First radio
+										          </label>
+										        </div>
+										        <div class="form-check">
+										          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+										          <label class="form-check-label" for="gridRadios2">
+										            Second radio
+										          </label>
+										        </div>
+										        <div class="form-check disabled">
+										          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+										          <label class="form-check-label" for="gridRadios3">
+										            Third disabled radio
+										          </label>
+										        </div>
+										      </div>
+										    </div>
+										  </fieldset>
+										  <div class="form-group row">
+										    <div class="col-sm-2">Checkbox</div>
+										    <div class="col-sm-10">
+										      <div class="form-check">
+										        <input class="form-check-input" type="checkbox" id="gridCheck1">
+										        <label class="form-check-label" for="gridCheck1">
+										          Example checkbox
+										        </label>
+										      </div>
+										    </div>
+										  </div>
+										  <!-- <div class="form-group row">
+										    <div class="col-sm-10">
+										      <button type="submit" class="btn btn-primary">Sign in</button>
+										    </div>
+										  </div> -->
+										</form>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal" id='close-modal'>Close</button>
+						        <button type="button" class="btn btn-primary" id='save-changes'>Save changes</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+                <input class="btn btn-success my-3" type="submit" value="Find Events">
+
+                </input>
+              </input>
+            </input>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8 main">
+          Schedule goes here
+          <div class="event">
+            Event 1
+          </div>
+          <div class="event">
+            Event 1
+          </div>
+          <div class="event">
+            Event 1
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="assets/javascript/mini-event-calendar.js">
+    </script>
+    <script src="assets/javascript/app.js">
+    </script>
+    <script>
+      var myEvents = [{
+				title: "Event Title 1",
+				date: 1519806678259, // unix timestamp
+				link: "jqueryscript.net" // event link
+				},{
+				title: "Event Title 2",
+				date: 1519851600000,
+				link: "jqueryscript.net"
+				},{
+				title: "Event Title 3",
+				date: 1519806678259, // unix timestamp
+				link: "jqueryscript.net" // event link
+				},{
+				title: "Event Title 4",
+				date: 1519851600000,
+				link: "jqueryscript.net"
+				},
+				// more events here
+			];
+
+			$("#calendar").MEC({
+				calendar_link: "jqueryscript.net", // calendar link
+				events: myEvents
+			});
+    </script>
+  </body>
 </html>
