@@ -75,6 +75,20 @@ $( window ).on( "load", function() {
   }
 
   $(document).on("click", "#citysubmit", findCity);
+  //savemodal
+  //$("#exampleModal").on("click", "show.bs.modal", saveFoodEvent);
+
+  $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('btnid') // Extract info from data-* attributes
+    console.log(button);
+    console.log(recipient);
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    //modal.find('.modal-body input').val(recipient)
+  })
+
+
 
 
 
@@ -87,6 +101,7 @@ function findCity(event) {
   event.preventDefault();
 
   var cityName = $("#cityinput").val().trim();
+  //var serialInput = $( "form" ).serialize();
   
   if (cityName == "") {
     alert("CITY must be filled out");
@@ -97,19 +112,17 @@ function findCity(event) {
     var cityClean = cityName.replace(" ", "+")
     var stateName = $("#state").find(":selected").text();
     var queryLocation = cityClean + "%2C" + stateName;
-    
     $("#cityhelp").text("You entered: " + cityName + ", " + stateName);
-
   }
 
-  console.log(cityName);
-  console.log(cityClean);
-  console.log(stateName);
-  console.log(queryLocation);
+  //console.log(serialInput);
+  // console.log(cityName);
+  // console.log(cityClean);
+  // console.log(stateName);
+  // console.log(queryLocation);
 
-    //var queryURL = "https://developers.zomato.com/api/v2.1/locations?query=oakland%2CCalifornia";
     var queryURL = "https://developers.zomato.com/api/v2.1/locations?&query=";
-    queryURL += queryLocation;
+    //queryURL += queryLocation;
   
     $.ajax({
       url: queryURL,
@@ -121,39 +134,28 @@ function findCity(event) {
 
       eid = response.location_suggestions["0"].city_id;
       etype = response.location_suggestions["0"].entity_type;
-      console.log(eid);
-      console.log(etype);
+      
       callZom(eid,etype);
     });
   }
-  //findCity();
-
-
-
 
   function callZom(inEid, inEType) {
-    //var searchTerm = $(this).attr("data-name");
-     searchEID = "entity_id=" + inEid + "&";
-     searchETYPE = "entity_type=" + inEType + "&";
-     var trend = "count=10&collection_id=1"
 
-    //var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=10773&entity_type=city&collection_id=1";
-    //var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=10773&entity_type=city";
-    //var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=10773&entity_type=city&count=10&collection_id=1";
+    searchEID = "entity_id=" + inEid + "&";
+    searchETYPE = "entity_type=" + inEType + "&";
+    var trend = "count=10&collection_id=1"
     var queryURL = "https://developers.zomato.com/api/v2.1/search?";
     
     queryURL += searchEID;
     queryURL += searchETYPE;
     queryURL += trend;
-    
-    //queryURL += searchTerm
+
     console.log(queryURL);
   
     $.ajax({
       url: queryURL,
       method: "GET",
       headers: { "user-key": "a9f103698b4f0c331c939d53be137fea"} 
-
     })
     .then(function(response) {
 
@@ -168,7 +170,7 @@ function findCity(event) {
         var zomObjectMin = zomObject.restaurant;
         
         
-        var dataBtnDiv = $("<div>");
+        var restaurantData = $("<div>");
         var cuisines = zomObjectMin.cuisines;
         var resultName = zomObjectMin.name;
         var resultAddy = zomObjectMin.location.address;
@@ -179,18 +181,15 @@ function findCity(event) {
         var cuisines = zomObjectMin.cuisines;
         // var impDate = gifObject.import_datetime
         // var gifid = gifObject.id;
-        var p1 = $("<p>").html(resultName + "<br/>" + resultAddy);
-
+        
         // var p2 = $("<p class='pone'>").text("Date: " + impDate);
         //var showImg = $('<img>');
-        // var addFavBtn = $("<br><div class='btn btn-info btn-xs'>").text("favs");
-        // var dwnBtn = $("<a>"); //.attr('download');      
-        btnData = $('<button>').text(cuisines); 
-        // var dwnlink1 = ' https://giphy.com/gifs/style-';
-        // var dwnId = dwnlink1 + gifid;
-        // var fullDwnLink = dwnId + '/download';
+        var addSavBtn = $("<button>").text("Add Event");
+        var p1 = $("<p>").html(resultName + "<br/>" + resultAddy + "<br/>");
   
-        dataBtnDiv.attr({
+        btnData = $('<button>').text(cuisines); 
+  
+        restaurantData.attr({
           'id': resultID,
           "class":"collapse"
         });
@@ -202,35 +201,40 @@ function findCity(event) {
           "data-target": catID
         })
   
-        // dwnBtn.append(btnData);
-  
-        // showImg.attr({
-        //   src: imgStill,
-        //   'data-move': imgMove,
-        //   'data-still': imgStill,
-        //   'data-state': "still",
-        //   'data-play': "play1",
-        //   class: "gifbox",
-        //   id: gifid
-        // });
-  
-        // addFavBtn.attr({
-        //   'data-btnid': gifid
-        // });
+        addSavBtn.attr({
+          'data-btnid': resultID,
+          'class':'btn btn-info btn-xs',
+          "data-toggle": "modal",
+          'data-target':'.foodsave'
+        });
   
         // p2.append(addFavBtn);
         // p2.append(dwnBtn);
         // p.append(p2);
-        dataBtnDiv.append(p1);
+
+        p1.append(addSavBtn)
+        restaurantData.append(p1);
         newFlex.append(btnData);
         $( btnData ).after(function() {
-          return dataBtnDiv;
+          return restaurantData;
         });
         $("#results").append( newFlex )
       })
     });
   }
- // callZom();
+
+  function saveFoodEvent (){
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('btnid') // Extract info from data-* attributes
+    console.log(button);
+    console.log(recipient);
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    //modal.find('.modal-body input').val(recipient)
+
+
+
+  }
 
 
 
