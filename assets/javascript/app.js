@@ -1,134 +1,59 @@
-var allEvents = {
-  event: {
-    eventName:'',
-    eventDate:'',
-    // In 15 min increments
-    eventTime:'',
-    eventDesc:'',
-  }
-}
+
+
+firebase.initializeApp(config);
+var dataRef = firebase.database();
+var eventsRef = dataRef.ref("events");
+
+var numEvents = 0;
+// var allEvents = {
+//   event: {
+//     eventName:'',
+//     eventDate:'',
+//     // In 15 min increments
+//     eventTime:'',
+//     eventDesc:'',
+//   }
+// }
 const datePicker = datepicker('#datepicker');
 const timePicker = $('#timepicker').timepicker();
-// $(document).ready(function() {
-// 	$( function() {
-//     $( "#datepicker" ).datepicker();
-//   } );
-//   // // define variables
-//   // var nativePicker = document.querySelector('.nativeDateTimePicker');
-//   // var fallbackPicker = document.querySelector('.fallbackDateTimePicker');
-//   // var fallbackLabel = document.querySelector('.fallbackLabel');
-//   // var yearSelect = document.querySelector('#year');
-//   // var monthSelect = document.querySelector('#month');
-//   // var daySelect = document.querySelector('#day');
-//   // var hourSelect = document.querySelector('#hour');
-//   // var minuteSelect = document.querySelector('#minute');
-//   // // hide fallback initially
-//   // fallbackPicker.style.display = 'none';
-//   // fallbackLabel.style.display = 'none';
-//   // // test whether a new datetime-local input falls back to a text input or not
-//   // var test = document.createElement('input');
-//   // test.type = 'datetime-local';
-//   // // if it does, run the code inside the if() {} block
-//   // if (test.type === 'text') {
-//   //   // hide the native picker and show the fallback
-//   //   nativePicker.style.display = 'none';
-//   //   fallbackPicker.style.display = 'block';
-//   //   fallbackLabel.style.display = 'block';
-//   //   // populate the days and years dynamically
-//   //   // (the months are always the same, therefore hardcoded)
-//   //   populateDays(monthSelect.value);
-//   //   populateYears();
-//   //   populateHours();
-//   //   populateMinutes();
-//   // }
 
-//   // function populateDays(month) {
-//   //   // delete the current set of <option> elements out of the
-//   //   // day <select>, ready for the next set to be injected
-//   //   while (daySelect.firstChild) {
-//   //     daySelect.removeChild(daySelect.firstChild);
-//   //   }
-//   //   // Create variable to hold new number of days to inject
-//   //   var dayNum;
-//   //   // 31 or 30 days?
-//   //   if (month === 'January' | month === 'March' | month === 'May' | month === 'July' | month === 'August' | month === 'October' | month === 'December') {
-//   //     dayNum = 31;
-//   //   } else if (month === 'April' | month === 'June' | month === 'September' | month === 'November') {
-//   //     dayNum = 30;
-//   //   } else {
-//   //     // If month is February, calculate whether it is a leap year or not
-//   //     var year = yearSelect.value;
-//   //     (year - 2016) % 4 === 0 ? dayNum = 29 : dayNum = 28;
-//   //   }
-//   //   // inject the right number of new <option> elements into the day <select>
-//   //   for (i = 1; i <= dayNum; i++) {
-//   //     var option = document.createElement('option');
-//   //     option.textContent = i;
-//   //     daySelect.appendChild(option);
-//   //   }
-//   //   // if previous day has already been set, set daySelect's value
-//   //   // to that day, to avoid the day jumping back to 1 when you
-//   //   // change the year
-//   //   if (previousDay) {
-//   //     daySelect.value = previousDay;
-//   //     // If the previous day was set to a high number, say 31, and then
-//   //     // you chose a month with less total days in it (e.g. February),
-//   //     // this part of the code ensures that the highest day available
-//   //     // is selected, rather than showing a blank daySelect
-//   //     if (daySelect.value === "") {
-//   //       daySelect.value = previousDay - 1;
-//   //     }
-//   //     if (daySelect.value === "") {
-//   //       daySelect.value = previousDay - 2;
-//   //     }
-//   //     if (daySelect.value === "") {
-//   //       daySelect.value = previousDay - 3;
-//   //     }
-//   //   }
-//   // }
+$(document).on('click','#save-changes', function() {
+  event.preventDefault();
+  var eventName = $('#event-name').val().trim();
+  console.log(eventName)
+  var eventDate = $('#datepicker').val().trim();
+  console.log(eventDate)
+  var eventTime = $('#timepicker').val().trim();
+  console.log(eventTime)
+  var eventDesc = $('#event-desc').val().trim();
+  console.log(eventDesc)
 
-//   // function populateYears() {
-//   //   // get this year as a number
-//   //   var date = new Date();
-//   //   var year = date.getFullYear();
-//   //   // Make this year, and the 100 years before it available in the year <select>
-//   //   for (var i = 0; i <= 100; i++) {
-//   //     var option = document.createElement('option');
-//   //     option.textContent = year - i;
-//   //     yearSelect.appendChild(option);
-//   //   }
-//   // }
+  
+  eventIndex = numEvents + 1
+  
+  var newEvent = {
+    name: eventName,
+    date: eventDate,
+    time: eventTime,
+    description: eventDesc
+  }
 
-//   // function populateHours() {
-//   //   // populate the hours <select> with the 24 hours of the day
-//   //   for (var i = 0; i <= 23; i++) {
-//   //     var option = document.createElement('option');
-//   //     option.textContent = (i < 10) ? ("0" + i) : i;
-//   //     hourSelect.appendChild(option);
-//   //   }
-//   // }
+  // Uploads employee data to the database
+  eventsRef.push(newEvent);
+  numEvents++
 
-//   // function populateMinutes() {
-//   //   // populate the minutes <select> with the 60 hours of each minute
-//   //   for (var i = 0; i <= 59; i++) {
-//   //     var option = document.createElement('option');
-//   //     option.textContent = (i < 10) ? ("0" + i) : i;
-//   //     minuteSelect.appendChild(option);
-//   //   }
-//   // }
-//   // // when the month or year <select> values are changed, rerun populateDays()
-//   // // in case the change affected the number of available days
-//   // yearSelect.onchange = function() {
-//   //   populateDays(monthSelect.value);
-//   // }
-//   // monthSelect.onchange = function() {
-//   //   populateDays(monthSelect.value);
-//   // }
-//   // //preserve day selection
-//   // var previousDay;
-//   // // update what day has been set to previously
-//   // // see end of populateDays() for usage
-//   // daySelect.onchange = function() {
-//   //   previousDay = daySelect.value;
-//   // }
-// });  
+  // Clear out user input values in modal
+  document.getElementById("event-name").value = '';
+  document.getElementById("datepicker").value = '';
+  document.getElementById("timepicker").value = '';
+  document.getElementById("event-desc").value = '';
+ 
+  // var form = $('#createEventForm')
+  // form.reset();
+
+  // Hide modal
+  $('#createEventModal').modal('hide');
+  return false;
+});
+
+// 

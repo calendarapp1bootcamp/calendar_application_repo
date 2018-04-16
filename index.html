@@ -126,7 +126,7 @@
 						        </button>
 						      </div>
 						      <div class="modal-body">
-										<form>
+										<form id='createEventForm'>
 										  <div class="form-group row">
 										    <div class="col-sm-12">
 										      <input type="text" class="form-control" id="event-name" placeholder="Event Name">
@@ -151,7 +151,7 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal" id='close-modal'>Close</button>
-						        <button type="button" class="btn btn-primary" id='save-changes'>Save changes</button>
+						        <button type="submit" class="btn btn-primary" id='save-changes'>Save changes</button>
 						      </div>
 						    </div>
 						  </div>
@@ -178,7 +178,17 @@
         </div>
       </div>
     </div>
-
+		<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+		<script> 
+			var config = {
+			  apiKey: "AIzaSyDpYShILLjEU8NldDiMV6GjKDMkvkOEOtg",
+		    authDomain: "calendar-app-134a7.firebaseapp.com",
+		    databaseURL: "https://calendar-app-134a7.firebaseio.com",
+		    projectId: "calendar-app-134a7",
+		    storageBucket: "",
+		    messagingSenderId: "885516367532"
+			}
+		</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
