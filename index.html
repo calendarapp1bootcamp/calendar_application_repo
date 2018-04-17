@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="assets/css/datepicker.css">
     <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -131,19 +137,46 @@
 						    </div>
 						  </div>
 						</div>
-
-                <input class="btn btn-success my-3" type="submit" value="Find Events">
-
-                </input>
+                <!-- <input class="btn btn-success my-3" type="submit" value="Find Events"> -->
               </input>
             </input>
+          </input>
+          <button class="btn btn-findfoodbtn" type="button" data-toggle="collapse" data-target="#findfoodinput" aria-expanded="false" aria-controls="collapseExample">
+            Find Restaurants
+          </button>
+          <div class="collapse" id="findfoodinput">
+            <div class="well">
+              Enter a city/town below for top 10 trending hotspots
+            </div>
+            <hr>
+            <form class="form-horizontal" action="">
+                <div class="form-group hotspot">
+                    <label for="cityinput">City</label>
+                    <input type="text" class="form-control" id="cityinput" placeholder="city" name="city/town">
+                    <label for="state">State:</label>
+                    <select class="form-control" id="state" name="usa"></select>
+                    <br>
+                    <button type="submit" id="citysubmit" class="btn btn-get">Get Restaurants</button>
+                </div>
+            </form>
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <span class="text-uppercase" id="cityhelp"></span>
+                </div>
+            </div>   
           </div>
+          <br>
+          <div id="results"></div>
         </div>
-        <div class="col-12 col-md-6 col-lg-8">
-        	<div class="row header">
-        		Today's Events
-        	</div>
-        	<div class="row events">
+      </div>
+
+
+      <div class="col-12 col-md-6 col-lg-8">
+        <div class="row header">
+          Today's Events
+        </div>
+        <div class="row events">
         		
         	</div>
         </div>
@@ -161,7 +194,9 @@
 			}
 		</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="assets/javascript/moment.js"></script>
@@ -172,6 +207,8 @@
     </script>
 		<script src="assets/javascript/datepicker.js"></script>
     <script src="assets/javascript/jquery.timepicker.js"></script>
+    <script src="assets/javascript/zom.js"></script>
+
     <script>
       var myEvents = [{
 				title: "Event Title 1",

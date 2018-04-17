@@ -32,3 +32,23 @@ body {
 	font-size: 30px;
 	font-weight: bold;
 }
+
+.hotspot {
+	font-weight: bold;
+}
+
+.opendetail {
+	padding: 0 0 0 2px;
+	font-weight: bold;
+	border: 1px solid black;
+	background: white;
+}
+
+.btn-get, .btn-findfoodbtn {
+	background: gold;
+}
+
+.btn-foundfood {
+	background: greenyellow;
+	border: 1px solid black;
+}
