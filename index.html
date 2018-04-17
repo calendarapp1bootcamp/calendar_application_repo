@@ -8,32 +8,10 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="assets/css/mini-event-calendar.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
     
     <link rel="stylesheet" href="assets/css/datepicker.css">
     <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
-    
-    <style>
-      html {
-				background-color: rgba(0, 0, 0, 0.4);
-				}
-				body {
-				background: transparent;
-
-				}
-				.main .event {
-				margin: 10px 20px;
-				padding: 12px;
-				border: 2px solid white;
-				border-radius: 7px;
-				background-color: rgba(255, 255, 255, 0.8);
-				}
-				.container {
-				padding: 25px;
-				}
-    </style>
-
-  
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -95,9 +73,6 @@
     <div class="container">
       <div class="row">
         <div class="col-12 buttons">
-          <h1>
-            Calendar App!
-          </h1>
         </div>
       </div>
       <div class="row">
@@ -164,17 +139,22 @@
             </input>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-8 main">
-          Schedule goes here
-          <div class="event">
-            Event 1
-          </div>
-          <div class="event">
-            Event 1
-          </div>
-          <div class="event">
-            Event 1
-          </div>
+        <div class="col-12 col-md-6 col-lg-8">
+        	<div class="row header">
+        		Today's Events
+        	</div>
+        	<div class="row events">
+        		<div class="event">
+	            Event 1
+	          </div>
+	          <div class="event">
+	            Event 1
+	          </div>
+	          <div class="event">
+	            Event 1
+	          </div>
+        	</div>
+          
         </div>
       </div>
     </div>

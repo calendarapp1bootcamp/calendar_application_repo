@@ -92,14 +92,12 @@
 
     function showEvent(event) {
       if (event && event !== null && event !== undefined) {
-        // event_title.text(event.title);
-        // events_link.text("VIEW EVENT");
-        // events_link.attr("href", event.link);
-        $('.main').html('<div>My Daily Schecdule</div>')
-
+        event_title.text(event.title);
+        events_link.text("VIEW EVENT");
+        events_link.attr("href", event.link);
       } else {
         event_title.text("No events on this day.");
-        events_link.text("ALL EVENTS");
+        events_link.text("SHOW ALL EVENTS");
         events_link.attr("href", settings.calendar_link);
       }
     }

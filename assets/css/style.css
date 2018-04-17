@@ -1,6 +1,34 @@
+html {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+body {
+	background: transparent;
+}
+.events .event {
+	display: block;
+	width: 100%;
+	margin: 10px 20px;
+	padding: 12px;
+	border: 2px solid white;
+	border-radius: 7px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.header {
+	width: 100%;
+	margin: 10px 20px;
+	color: #fff;
+}
+.container {
+	padding: 25px;
+}
+
 #datepicker {
 	padding: 0 12px;
 }
 #timepicker {
 	padding: 0 12px;
+}
+.header {
+	font-size: 30px;
+	font-weight: bold;
 }
