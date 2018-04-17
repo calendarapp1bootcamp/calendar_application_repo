@@ -1,3 +1,9 @@
+firebase.initializeApp(config);
+var dataRef = firebase.database();
+var eventsRef = dataRef.ref("events");
+
+
+
 (function($) {
   var calenderTpl = '<div id="calTitle"><button class="month-mover prev"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button><div id="monthYear"></div><button class="month-mover next"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button></div><div><div id="calThead"><div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div></div><div id="calTbody"></div></div><div id="calTFooter"><h3 id="eventTitle">No events today.</h3><a  id="calLink">ALL EVENTS</a></div>';
   var short_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -30,8 +36,14 @@
         else viewPrevMonth();
       });
     });
+
+    // Handler for clicking date within mini-calendar
     mini_cal.on("click, focusin", ".a-date", function() {
-      if (!$(this).hasClass('blurred')) showEvent($(this).data('event'));
+      if (!$(this).hasClass('blurred')) {
+        var clickedDate = $(this>span).html()
+        showEvents(clickedDate);
+        console.log('clickedDate: ' + clickedDate)
+      } 
     });
 
     function populateCalendar(month, year) {
@@ -51,7 +63,7 @@
         });
         if (event_index != -1) {
           event = settings.events[event_index];
-          if (isToday) showEvent(event);
+          if (isToday) showEvents(event);
         }
         tbody.append(date_tpl(false, ldate.getDate(), isToday, event));
         ldate.setDate(ldate.getDate() + 1);
@@ -90,16 +102,17 @@
       return tpl;
     }
 
-    function showEvent(event) {
-      if (event && event !== null && event !== undefined) {
-        event_title.text(event.title);
-        // events_link.text("VIEW EVENT");
-        // events_link.attr("href", event.link);
-      } else {
-        event_title.text("No events on this day.");
-        // events_link.text("SHOW ALL EVENTS");
-        // events_link.attr("href", settings.calendar_link);
-      }
+    function showEvents(date) {
+      var shortdate = cur_month + date + cur_year
+      // if (event && event !== null && event !== undefined) {
+      //   event_title.text(event.title);
+      //   events_link.text("VIEW EVENT");
+      //   events_link.attr("href", event.link);
+      // } else {
+      //   event_title.text("No events on this day.");
+      //   events_link.text("SHOW ALL EVENTS");
+      //   events_link.attr("href", settings.calendar_link);
+      // }
     }
 
     function viewNextMonth() {
