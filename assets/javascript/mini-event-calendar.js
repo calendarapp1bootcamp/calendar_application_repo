@@ -1,6 +1,6 @@
-firebase.initializeApp(config);
-var dataRef = firebase.database();
-var eventsRef = dataRef.ref("events");
+// firebase.initializeApp(config);
+// var dataRef = firebase.database();
+// var eventsRef = dataRef.ref("events");
 
 
 
