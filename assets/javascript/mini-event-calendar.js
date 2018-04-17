@@ -1,5 +1,5 @@
 (function($) {
-  var calenderTpl = '<div id="calTitle"><button class="month-mover prev"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button><div id="monthYear"></div><button class="month-mover next"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button></div><div><div id="calThead"><div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div></div><div id="calTbody"></div></div><div id="calTFooter"><h3 id="eventTitle">No events today.</h3><a href="javascript:void(0);" id="calLink">ALL EVENTS</a></div>';
+  var calenderTpl = '<div id="calTitle"><button class="month-mover prev"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button><div id="monthYear"></div><button class="month-mover next"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button></div><div><div id="calThead"><div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div></div><div id="calTbody"></div></div><div id="calTFooter"><h3 id="eventTitle">No events today.</h3><a  id="calLink">ALL EVENTS</a></div>';
   var short_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   var today = new Date();
   var cur_month = today.getMonth();
@@ -21,7 +21,7 @@
     cal_title.text("Feb 2018");
     event_title.text("No events today.");
     events_link.text("ALL EVENTS");
-    events_link.attr("href", settings.calendar_link);
+    // events_link.attr("href", settings.calendar_link);
     if (!settings.calendar_link.length && !settings.events.length) cal_footer.css("display", "none");
     mini_cal.find(".month-mover").each(function() {
       var mover = $(this);
@@ -93,12 +93,12 @@
     function showEvent(event) {
       if (event && event !== null && event !== undefined) {
         event_title.text(event.title);
-        events_link.text("VIEW EVENT");
-        events_link.attr("href", event.link);
+        // events_link.text("VIEW EVENT");
+        // events_link.attr("href", event.link);
       } else {
         event_title.text("No events on this day.");
-        events_link.text("SHOW ALL EVENTS");
-        events_link.attr("href", settings.calendar_link);
+        // events_link.text("SHOW ALL EVENTS");
+        // events_link.attr("href", settings.calendar_link);
       }
     }
 
