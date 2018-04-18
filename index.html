@@ -177,16 +177,9 @@
       </div>
     </div>
 		<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-		<script> 
-			var config = {
-			  apiKey: "AIzaSyDpYShILLjEU8NldDiMV6GjKDMkvkOEOtg",
-		    authDomain: "calendar-app-134a7.firebaseapp.com",
-		    databaseURL: "https://calendar-app-134a7.firebaseio.com",
-		    projectId: "calendar-app-134a7",
-		    storageBucket: "",
-		    messagingSenderId: "885516367532"
-			}
-		</script>
+		<script src="assets/javascript/firebase-connection.js"></script> 
+			
+	
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
@@ -203,29 +196,10 @@
     <script src="assets/javascript/zom.js"></script>
 
     <script>
-      var myEvents = [{
-				title: "Event Title 1",
-				date: 1519806678259, // unix timestamp
-				link: "jqueryscript.net" // event link
-				},{
-				title: "Event Title 2",
-				date: 1519851600000,
-				link: "jqueryscript.net"
-				},{
-				title: "Event Title 3",
-				date: 1519806678259, // unix timestamp
-				link: "jqueryscript.net" // event link
-				},{
-				title: "Event Title 4",
-				date: 1519851600000,
-				link: "jqueryscript.net"
-				},
-				// more events here
-			];
 
 			$("#calendar").MEC({
 				calendar_link: "jqueryscript.net", // calendar link
-				events: myEvents
+				// events: myEvents
 			});
     </script>
     <script src="assets/javascript/app.js">

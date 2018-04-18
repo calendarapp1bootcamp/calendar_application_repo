@@ -1,7 +1,5 @@
-var mainapp = firebase.initializeApp(config);
-var dataRef = firebase.database();
-var eventsRef = dataRef.ref("events");
-var numEvents = 0;
+
+
 const datePicker = datepicker('#datepicker');
 const timePicker = $('#timepicker').timepicker();
 
@@ -22,7 +20,7 @@ $(document).on('click', '#save-changes', function() {
   console.log('eventTime: ' + eventTime)
   var eventDesc = $('#event-desc').val().trim();
   console.log('eventDesc: ' + eventDesc)
-  eventIndex = numEvents + 1
+ 
   var newEvent = {
     name: eventName,
     date: eventDate,
@@ -32,7 +30,6 @@ $(document).on('click', '#save-changes', function() {
   }
   // Uploads employee data to the database
   eventsRef.push(newEvent);
-  numEvents++
   // Clear out user input values in modal
   document.getElementById("event-name").value = '';
   document.getElementById("datepicker").value = '';

@@ -1,7 +1,3 @@
-var secondaryApp = firebase.initializeApp(config, "Secondary");
-
-
-
 (function($) {
   var calenderTpl = '<div id="calTitle"><button class="month-mover prev"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button><div id="monthYear"></div><button class="month-mover next"><svg fill="#FFFFFF" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></button></div><div><div id="calThead"><div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div></div><div id="calTbody"></div></div><div id="calTFooter"><h3 id="eventTitle">No events today.</h3><a  id="calLink">ALL EVENTS</a></div>';
   var short_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -123,12 +119,12 @@ var secondaryApp = firebase.initializeApp(config, "Secondary");
 
 
       // Firebase eventsRef ordered by unixdate for a specific day
-      // var eventsByDate = secondaryApp.database().ref('events').orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
+      var eventsByDate = eventsRef.orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
       // // var eventsByDate = eventsRef.orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
       
 
 
-      // console.log('eventsByDate: ' + eventsByDate)
+      console.log('eventsByDate: ' + eventsByDate)
 
     //   eventsByDate.once("value").then(function(snapshot) {
 		  //   snapshot.forEach(function(childSnapshot) {
