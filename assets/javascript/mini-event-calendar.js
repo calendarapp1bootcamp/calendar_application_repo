@@ -1,6 +1,4 @@
-// firebase.initializeApp(config);
-// var dataRef = firebase.database();
-// var eventsRef = dataRef.ref("events");
+var secondaryApp = firebase.initializeApp(config, "Secondary");
 
 
 
@@ -40,9 +38,12 @@
     // Handler for clicking date within mini-calendar
     mini_cal.on("click, focusin", ".a-date", function() {
       if (!$(this).hasClass('blurred')) {
-        var clickedDate = $(this>span).html()
+      	console.log($(this).children().text())
+
+        // var clickedDate = $(this>.val())
         showEvents(clickedDate);
-        console.log('clickedDate: ' + clickedDate)
+        // console.log('clickedDate: ' + clickedDate)
+
       } 
     });
 
@@ -104,6 +105,10 @@
 
     function showEvents(date) {
       var shortdate = cur_month + date + cur_year
+      console.log ('shortdate: ' + shortdate)
+
+      // secondaryApp.database().ref("events").set(anotherValue);
+
       // if (event && event !== null && event !== undefined) {
       //   event_title.text(event.title);
       //   events_link.text("VIEW EVENT");

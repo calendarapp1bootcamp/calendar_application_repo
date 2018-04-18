@@ -1,4 +1,4 @@
-firebase.initializeApp(config);
+var mainapp = firebase.initializeApp(config);
 var dataRef = firebase.database();
 var eventsRef = dataRef.ref("events");
 var numEvents = 0;
