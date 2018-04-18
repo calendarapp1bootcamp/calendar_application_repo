@@ -4,15 +4,43 @@ html {
 body {
 	background: transparent;
 }
+
+/* Event div CSS */
 .events .event {
 	display: block;
 	width: 100%;
 	margin: 10px 20px;
-	padding: 12px;
+	
 	border: 2px solid white;
-	border-radius: 7px;
+	border-radius: 10px;
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
+.events span {
+  font-family: helvetica, sans-serif;
+  opacity: 0.8;
+}
+.event div {
+	padding: 6px 16px;
+}
+.event div:nth-of-type(2) {
+	padding: 16px 16px 6px 16px;
+}
+.event div:last-of-type {
+	padding: 6px 16px 16px 16px;
+}
+.event svg {
+	margin-right: 20px;
+	opacity: 0.8;
+}
+
+.event-name {
+	background: deepskyblue;
+	border-radius: 10px 10px 0 0;
+	color: #fff;
+	font-size: 1.3rem;
+}
+
 .header {
 	width: 100%;
 	margin: 10px 20px;

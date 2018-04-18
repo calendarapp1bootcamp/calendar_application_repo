@@ -68,18 +68,17 @@ function showAllEvents() {
       // Create new event div
       var eventDiv = $('<div class="event"></div>')
 
-      var eventNameDiv = $('<div class="event-name">Event: ' + eventName + '</div>')
+      var eventNameDiv = $('<div class="event-name"><span>' + eventName + '</span></div>')
       eventDiv.append(eventNameDiv)
 
-      var eventDateDiv = $('<div class="event-date">Date: ' + eventDate + '</div>')
+      var eventDateDiv = $('<div class="event-date">' + '<i class="fas fa-calendar-alt"></i>' + '<span>' + eventDate + '</span></div>')
       eventDiv.append(eventDateDiv)
 
-      var eventTimeDiv = $('<div class="event-time">Time: ' + eventTime + '</div>')
+      var eventTimeDiv = $('<div class="event-time">' + '<i class="fas fa-clock"></i>' + '<span>' + eventTime + '</span></div>')
       eventDiv.append(eventTimeDiv)
 
-      var eventDescDiv = $('<div class="event-desc">Details: ' + eventDesc + '</div>')
+      var eventDescDiv = $('<div class="event-desc">' + '<i class="fas fa-align-left"></i>' + '<span>' + eventDesc + '</span></div>')
       eventDiv.append(eventDescDiv)
-
 
       eventsContainer.append(eventDiv)
       
