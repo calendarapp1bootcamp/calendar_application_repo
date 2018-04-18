@@ -38,11 +38,10 @@ var secondaryApp = firebase.initializeApp(config, "Secondary");
     // Handler for clicking date within mini-calendar
     mini_cal.on("click, focusin", ".a-date", function() {
       if (!$(this).hasClass('blurred')) {
-      	console.log($(this).children().text())
-
-        // var clickedDate = $(this>.val())
+      	// console.log($(this).children().text())
+      	var clickedDate = $(this).children().text()  
+      	console.log('cur_month: ' + cur_month)
         showEvents(clickedDate);
-        // console.log('clickedDate: ' + clickedDate)
 
       } 
     });
@@ -104,10 +103,67 @@ var secondaryApp = firebase.initializeApp(config, "Secondary");
     }
 
     function showEvents(date) {
-      var shortdate = cur_month + date + cur_year
-      console.log ('shortdate: ' + shortdate)
 
-      // secondaryApp.database().ref("events").set(anotherValue);
+    	// Clear display
+		  var eventsContainer = $('.events')
+		  eventsContainer.empty();
+
+
+    	var month = short_months[cur_month]
+      var shortdate = month + '-' + date + '-' + cur_year
+      console.log ('shortdate: ' + shortdate)
+      console.log(typeof(shortdate))
+
+      var unixDate = moment(shortdate);
+      console.log('unixDate: ' + unixDate)
+
+      unixMin = unixDate
+      unixMax = unixMin + 86400000
+      console.log('unixMax: ' + unixMax)
+
+
+      // Firebase eventsRef ordered by unixdate for a specific day
+      // var eventsByDate = secondaryApp.database().ref('events').orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
+      // // var eventsByDate = eventsRef.orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
+      
+
+
+      // console.log('eventsByDate: ' + eventsByDate)
+
+    //   eventsByDate.once("value").then(function(snapshot) {
+		  //   snapshot.forEach(function(childSnapshot) {
+		  //     var key = childSnapshot.key;
+		  //     console.log('key: ' + key)
+		  //     // childData will be the actual contents of the child
+		  //     var childData = childSnapshot.val();
+		  //     console.log('childData: ' + childData)
+		  //     var eventName = childData.name
+		  //     var eventDate = childData.date
+		  //     var eventTime = childData.time
+		  //     var eventDesc = childData.description
+
+		  //     // Create new event div
+		  //     var eventDiv = $('<div class="event"></div>')
+
+		  //     var eventNameDiv = $('<div class="event-name"><span>' + eventName + '</span></div>')
+		  //     eventDiv.append(eventNameDiv)
+
+		  //     var eventDateDiv = $('<div class="event-date">' + '<i class="fas fa-calendar-alt"></i>' + '<span>' + eventDate + '</span></div>')
+		  //     eventDiv.append(eventDateDiv)
+
+		  //     var eventTimeDiv = $('<div class="event-time">' + '<i class="fas fa-clock"></i>' + '<span>' + eventTime + '</span></div>')
+		  //     eventDiv.append(eventTimeDiv)
+
+		  //     var eventDescDiv = $('<div class="event-desc">' + '<i class="fas fa-align-left"></i>' + '<span>' + eventDesc + '</span></div>')
+		  //     eventDiv.append(eventDescDiv)
+
+		  //     eventsContainer.append(eventDiv)
+		      
+		  //     // Update header
+		  //     $('.header').html('All Events')
+		  //   });
+		  // });
+      
 
       // if (event && event !== null && event !== undefined) {
       //   event_title.text(event.title);
