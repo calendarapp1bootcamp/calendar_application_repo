@@ -115,10 +115,16 @@
 
       unixMin = unixDate
       unixMax = unixMin + 86400000
+      intUnixMin = parseInt(unixMin)
+      intUnixMax = parseInt(unixMax)
+      console.log('unixMin: ' + unixMin)
       console.log('unixMax: ' + unixMax)
-
+      console.log('typeof(intUnixMin): ' + typeof(intUnixMin))
 
       // Firebase eventsRef ordered by unixdate for a specific day
+      
+      console.log(eventsRef.orderByChild('unixdate').startAt(intUnixMin))
+
       var eventsByDate = eventsRef.orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
       // // var eventsByDate = eventsRef.orderByChild('unixdate').startAt([unixMin]).endAt([unixMax])
       
